@@ -123,21 +123,21 @@ def paint_classification(canvas, figure, x, y, metka):
 
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
-    ax.set_title('Classification')
+    ax.set_title('Классификация')
     canvas.draw()
 
 # Функция для рисования графиков регрессии
 def paint_regression(canvas, figure, y, a=0, b=0):
     figure.clear()
     ax = figure.add_subplot(111)
-    ax.scatter(range(len(y)), y, color='red', label='Data Points')
+    ax.scatter(range(len(y)), y, color='red', label='Дата')
     x_line = np.arange(len(y))
     y_line = a * x_line + b
-    ax.plot(x_line, y_line, color='black', label=f'Line: {a:.2f}x + {b:.2f}')
+    ax.plot(x_line, y_line, color='black', label=f'Линия: {a:.2f}x + {b:.2f}')
 
-    ax.set_xlabel('Index')
+    ax.set_xlabel('Индекс')
     ax.set_ylabel('Y')
-    ax.set_title('Regression')
+    ax.set_title('Регресс')
     ax.legend()
     canvas.draw()
 
@@ -145,7 +145,7 @@ def paint_regression(canvas, figure, y, a=0, b=0):
 def main():
     # Создаем окно
     root = tk.Tk()
-    root.title("Visualization")
+    root.title("lab2")
 
     # Создаем область для графиков
     figure = plt.Figure(figsize=(6, 5), dpi=100)
