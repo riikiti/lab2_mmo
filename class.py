@@ -35,7 +35,7 @@ class NeuralNetwork:
 
     def backprop(self, XY, true_out, learn_rate):
         self.feedforward(XY)
-        out_corr = true_out - self.output #РѕС€РёР±РєР°
+        out_corr = true_out - self.output #ошибка
 
         ds = df_activation(self.output)
         sigm_out = learn_rate * out_corr * ds
@@ -75,7 +75,7 @@ def classifier(X):
 
 
 def sepfunction(x):
-    return 4 * x * x - 3 * x + 1  # РєРІР°РґСЂР°С‚РёС‡РЅР°СЏ
+    return 4 * x * x - 3 * x + 1  # квадратичная
 
 
 def generate_classified_data(sz):
@@ -85,7 +85,7 @@ def generate_classified_data(sz):
 
 
 def sort_points(Points, Point_classes):
-    # РљР»Р°СЃСЃРёС„РёС†РёСЂСѓРµРј РґР°РЅРЅС‹Рµ РІСЂСѓС‡РЅСѓСЋ
+    # Классифицируем данные вручную
     ai = np.where(Point_classes > .5)
     bi = np.where(Point_classes <= .5)
 
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     plt.title("Тестовая выборка")
     plt.subplot(1, 3, 3)
 
-    # РѕС€РёР±РєРё РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј
+    # ошибки отрисовываем
     plt.plot(loss[0][:epoch])
     plt.title("Изменение ошибки")
     plt.xlim(0, epoch)

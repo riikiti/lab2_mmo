@@ -36,7 +36,7 @@ class NeuralNetwork:
 
     def backprop(self, XY, true_out, learn_rate):
         self.feedforward(XY)
-        out_corr = true_out - self.output #РѕС€РёР±РєР°
+        out_corr = true_out - self.output #ошибка
 
         ds = df_activation(self.output)
         sigm_out = learn_rate * out_corr * ds
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     plt.title("Регрессия")
 
     plt.subplot(1, 2, 2)
-    # РѕС€РёР±РєРё РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј
+    # ошибки отрисовываем
     plt.plot(loss[0][:epoch])
     plt.title("Изменение ошибки")
     plt.xlim(0, epoch)
