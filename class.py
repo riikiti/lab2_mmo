@@ -106,21 +106,21 @@ if __name__ == "__main__":
 
     nw = NeuralNetwork()
     (loss, epoch, loss_test) = nw.train(XY_train, C_train, XY_test, C_test)
-    print(f"РћС€РёР±РєР° РЅР° РѕР±СѓС‡Р°Р±С‰РµР№ РІС‹Р±РѕСЂРєРµ= {loss[0][epoch]}.")
-    print(f"РћС€РёР±РєР° РЅР° С‚РµСЃС‚РѕРІРѕР№ РІС‹Р±РѕСЂРєРµ= {loss_test}.")
+    print(f"Ошибка на обучающей выборке = {loss[0][epoch]}.")
+    print(f"Ошибка на тестовой выборке = {loss_test}.")
 
 
     nw_res = np.apply_along_axis(nw.feedforward, 1, XY_test)
     (Ax, Ay, Bx, By) = sort_points(XY_train, C_train)
 
-    plt.suptitle("Р‘РёРЅР°СЂРЅР°СЏ РєР»Р°СЃСЃРёС„РёРєР°С†РёСЏ")
+    plt.suptitle("Бинарная классификация")
     plt.subplot(1, 3, 1)
     plt.scatter(Ax, Ay, label='A')
     plt.scatter(Bx, By, label='B')
     plt.plot(X_sepline, Y_sepline)  # draw separation line
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.0])
-    plt.title("РћР±СѓР°СЋС‰Р°СЏ РІС‹Р±РѕСЂРєР°")
+    plt.title("Обучающая выборка")
 
 
     (Ax, Ay, Bx, By) = sort_points(XY_test, nw_res.T[0])
@@ -130,11 +130,11 @@ if __name__ == "__main__":
     plt.plot(X_sepline, Y_sepline)  # draw separation line
     plt.xlim([0.0, 1.0])
     plt.ylim([0.0, 1.0])
-    plt.title("РўРµСЃС‚РѕРІР°СЏ РІС‹Р±РѕСЂРєР°")
+    plt.title("Тестовая выборка")
     plt.subplot(1, 3, 3)
 
     # РѕС€РёР±РєРё РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј
     plt.plot(loss[0][:epoch])
-    plt.title("РР·РјРµРЅРµРЅРёРµ РѕС€РёР±РєРё")
+    plt.title("Изменение ошибки")
     plt.xlim(0, epoch)
     plt.show()

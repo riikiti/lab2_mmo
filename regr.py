@@ -86,19 +86,19 @@ if __name__ == "__main__":
     nw = NeuralNetwork(inp_count=1)
     (loss, epoch, loss_test) = nw.train(X_train, Y_train, X_test, Y_test)
     nw_res = np.apply_along_axis(nw.feedforward, 1, X_test)
-    print(f"РћС€РёР±РєР° РЅР° РѕР±СѓС‡Р°Р±С‰РµР№ РІС‹Р±РѕСЂРєРµ= {loss[0][epoch]}.")
-    print(f"РћС€РёР±РєР° РЅР° С‚РµСЃС‚РѕРІРѕР№ РІС‹Р±РѕСЂРєРµ= {loss_test}.")
+    print(f"Ошибка на обучающей выборке = {loss[0][epoch]}.")
+    print(f"Ошибка на тестовой выборке = {loss_test}.")
 
-    plt.suptitle("Р РµРіСЂРµСЃСЃРёСЏ")
+    plt.suptitle("Регрессия")
     plt.subplot(1, 2, 1)
     plt.scatter(X_train, Y_train, label="A")
     plt.plot(X_test.T[0], Y_test.T[0], label="B")  # draw separation line
     plt.plot(X_test.T[0], nw_res.T[0], label="C")
-    plt.title("Р РµРіСЂРµСЃСЃРёСЏ")
+    plt.title("Регрессия")
 
     plt.subplot(1, 2, 2)
     # РѕС€РёР±РєРё РѕС‚СЂРёСЃРѕРІС‹РІР°РµРј
     plt.plot(loss[0][:epoch])
-    plt.title("РР·РјРµРЅРµРЅРёРµ РѕС€РёР±РєРё")
+    plt.title("Изменение ошибки")
     plt.xlim(0, epoch)
     plt.show()
